@@ -61,4 +61,15 @@ export FLASK_APP=rest_service.py
 python -m flask run
 ```
 
-Future improvements to the rest service:
+Possible Improvements
+
+Even for a problem as simple as this, we could make things interesting: What will the request/sec be for ```word_count``` and ```write_message```?
+
+If messages are relatively short and ```word_count``` does a lot more traffic than ```write_message```, then you should 100% count the words in the message in write_message and update the count along with writing the message to the store.
+
+If messages are regularly insanely long and ```write_message``` does a lot  of traffic relative to ```word_count```, then you have a couple options:
+-If you're okay with returning stale word_count to the client, then you could only write the message in ```write_message```, and then have another thread that polls the store for messages whose words havent been counted yet and counts them and updates the count.
+-When ```write_message``` is called you write it to store, but you also write it to an in memory store as well. In this way, when ```word_count``` is called it will go the store to read the current count, and then it will also go to that in memory store and proceed to count all the words there and add them to get the final count, clear everything in the in memory store, write the new count to the store, and then return the count.
+
+Best solution:
+If write_message sees a message of size > some threshold of bytes, then it hands it off to another thread to perform the count and update it in the store. Otherwise, it just does the count right then and there and updates it and writes the message in the store.
