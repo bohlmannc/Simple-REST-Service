@@ -7,6 +7,9 @@ from abc import ABC, abstractmethod
 app = Flask(__name__)
 
 
+# Python is dynamically typed, so we are creating an interface using an abstract class. 
+# Methods defined here must also be defined in subclasses.
+
 class MessageStore(ABC):
 
     def __init__(self):
@@ -28,7 +31,7 @@ class RedisMessageStore(MessageStore):
         self.host = host
         self.port = port
         self.db = db
-        self.r = redis.StrictRedis(host, port, db)
+        self.r = redis.StrictRedis(host, port, db) # Create our redis server
 
     def write_message(self, message):
         key = message['id']
@@ -60,15 +63,15 @@ class InMemoryMessageStore(MessageStore):
 
 
 r = RedisMessageStore(host='localhost', port=6379, db=0)
-r.write_message({"id": "092", "message": "try"})
+r.write_message({"id": "092", "message": "try"}) # Test messages here
 r.write_message({"id": "13", "message": "unlucky"})
 r.write_message({"id": "099", "message": "add two"})
 r.write_message({"id": "584", "message": "very very very long string"})
 r.write_message({"id": "099", "message": "add two"})
 
 
-wc = str(r.word_count())
-c = 'count = ' + wc
+wc = str(r.word_count()) # Converting to a String
+c = 'count = ' + wc # Getting the output formatted
 
 
 @app.route("/")
