@@ -39,6 +39,8 @@ Now, you need to download and start the redis server (http://download.redis.io).
 Navigate to the redis folder after downloading:
 
 ```
+cd
+cd Downloads
 cd redis-5.0.5/
 cd src
 ```
@@ -62,17 +64,17 @@ python -m flask run
 ```
 
 You will be able to see the current count at: http://127.0.0.1:5000/.
-You can add messages in the rest_service.py. For example:
+You can add messages by editing rest_service.py. For example:
 
 ```
-r.write_message({"id": "0121:, "message":"goodbye world"})
+r.write_message({"id": "0121", "message":"goodbye world"})
 ```
 
 Run the script again in python, return to the command line, export the file, and run flask again. Your count should go up.
 
 Possible Improvements
 
-Even for a problem as simple as this, we could make things interesting: What will the request/sec be for ```word_count``` and ```write_message```?
+Even for a problem as simple as this, we could make things interesting: What will the requests/sec be for ```word_count``` and ```write_message```?
 
 If messages are relatively short and ```word_count``` does a lot more traffic than ```write_message```, then you should 100% count the words in the message in write_message and update the count along with writing the message to the store.
 
