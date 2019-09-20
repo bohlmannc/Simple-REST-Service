@@ -61,6 +61,15 @@ export FLASK_APP=rest_service.py
 python -m flask run
 ```
 
+You will be able to see the current count at: http://127.0.0.1:5000/.
+You can add messages in the rest_service.py. For example:
+
+```
+r.write_message({"id": "0121:, "message":"goodbye world"})
+```
+
+Run the script again in python, return to the command line, export the file, and run flask again. Your count should go up.
+
 Possible Improvements
 
 Even for a problem as simple as this, we could make things interesting: What will the request/sec be for ```word_count``` and ```write_message```?
