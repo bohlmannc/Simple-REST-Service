@@ -6,7 +6,7 @@ Necessary dowloads:
 -Flask
 
 To build the project:
-First, download Python (3.4 or greater - 3.7 was used). Python will come with the json and abc modules without any additional downloads.
+First, download Python 3.4 or greater (3.7 was used). Python will come with the json and abc modules without any additional downloads.
 
 Once you have Python, you can use pip commands to install a virtual env, Flask, and Redis.
 
