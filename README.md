@@ -12,19 +12,25 @@ Once you have Python, you can use pip commands to install a virtual env, Flask, 
 
 In the command line: 
 
-```python3 -m pip install virtualenv```
-```pip3 install Flask```
-```pip3 install redis```
+```
+python3 -m pip install virtualenv
+pip3 install Flask
+pip3 install redis
+```
 
 Then create a new folder for this project:
 
-```mkdir myproject```
-```cd myproject```
+```
+mkdir myproject
+cd myproject
+```
 
 And activate the virtualenv:
 
-```python3 -m venv venv```
-```.venv/bin/activate```
+```
+python3 -m venv venv
+.venv/bin/activate
+```
 
 Download rest_service.py and save it to your project folder.
 
@@ -32,13 +38,17 @@ Now, you need to download and start the redis server (http://download.redis.io).
 
 Navigate to the redis folder after downloading:
 
-```cd redis-5.0.5/```
-```cd src```
+```
+cd redis-5.0.5/
+cd src
+```
 
 Now you are in the redis source file. Use the following commands to install and test redis:
 
-```make install```
-```make test```
+```
+make install
+make test
+```
 
 And one final command to start the server:
 
@@ -46,7 +56,9 @@ And one final command to start the server:
 
 Now, it's time to launch the Flask server.
 
-```export FLASK_APP=rest_service.py```
-```python -m flask run```
+```
+export FLASK_APP=rest_service.py
+python -m flask run
+```
 
 Future improvements to the rest service:
