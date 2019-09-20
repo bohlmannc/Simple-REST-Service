@@ -71,7 +71,7 @@ wc = str(r.word_count())
 c = 'count = ' + wc
 
 
-@app.route("/foo")
+@app.route("/")
 def main():
     print(c)
     return json.dumps(c)
