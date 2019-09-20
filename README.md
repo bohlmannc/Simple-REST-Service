@@ -4,7 +4,6 @@ REST service to count words in a JSON message
 Necessary dowloads:
 
 -Redis
-
 -Flask
 
 To build the project:
